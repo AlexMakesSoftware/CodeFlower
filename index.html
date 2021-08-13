@@ -16,19 +16,15 @@
         <h1>TBMI CodeFlower Source code visualization</h1>
         
         <div id="visualization"></div>
-
-        <script type="text/javascript" src="javascripts/jquery-3.6.0.min.js"></script>
-        <script type="text/javascript" src="javascripts/d3/d3.js"></script>
-        <script type="text/javascript" src="javascripts/d3/d3.geom.js"></script>
-        <script type="text/javascript" src="javascripts/d3/d3.layout.js"></script>
-        <script type="text/javascript" src="javascripts/CodeFlower.js"></script>
-        <script type="text/javascript" src="javascripts/dataConverter.js"></script>
-        <script type="text/javascript">
+        <script src="//d3js.org/d3.v2.min.js"></script>        
+        <script src="javascripts/CodeFlower.js"></script>
+        <script src="javascripts/dataConverter.js"></script>
+        <script>
         var currentCodeFlower;
         var createCodeFlower = function(json) {        
           var total = countElements(json);
           const w  = (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) * 0.6;
-          const h = (window.innerHeight|| document.documentElement.clientHeight|| document.body.clientHeight) * 0.6;
+          const h = (window.innerHeight|| document.documentElement.clientHeight|| document.body.clientHeight) * 0.8;
           
           // create a new CodeFlower
           currentCodeFlower = new CodeFlower("#visualization", w, h).update(json);

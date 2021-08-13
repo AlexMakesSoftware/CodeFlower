@@ -4,10 +4,11 @@ var CodeFlower = function(selector, w, h) {
 
   d3.select(selector).selectAll("svg").remove();
 
-  this.svg = d3.select(selector).append("svg:svg")
-    .attr('width', w)
-    .attr('height', h);
-
+  this.svg = d3.select(selector)
+    .append("svg:svg")
+      .attr('width', w)
+      .attr('height', h);
+    
   this.svg.append("svg:rect")
     .style("stroke", "#999")
     .style("fill", "#fff")
@@ -19,7 +20,20 @@ var CodeFlower = function(selector, w, h) {
     .charge(function(d) { return d._children ? -d.size / 100 : -40; })
     .linkDistance(function(d) { return d.target._children ? 80 : 25; })
     .size([w, h]);
+    
+  /*let zoom = d3.zoom()
+    .on('zoom', handleZoom);
+    
+  d3.select('svg')
+    .call(zoom);*/
 };
+
+function handleZoom(e) {
+  d3.select('svg g')
+    .attr('transform', e.transform);
+}
+
+
 
 CodeFlower.prototype.update = function(json) {
   if (json) this.json = json;
