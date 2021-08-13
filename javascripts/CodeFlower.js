@@ -18,7 +18,8 @@ var CodeFlower = function(selector, w, h) {
     .on("tick", this.tick.bind(this))
     .charge(function(d) { return d._children ? -d.size / 100 : -40; })
     .linkDistance(function(d) { return d.target._children ? 80 : 25; })
-    .size([h, w]);
+    .size([w, h]);
+    //.size([h, w]); ???
 };
 
 CodeFlower.prototype.update = function(json) {
